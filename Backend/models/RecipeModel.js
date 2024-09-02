@@ -91,4 +91,4 @@ recipeSchema.pre('save', function (next) {
 // Compile and export the Recipe model
 const Recipe = mongoose.model('Recipe', recipeSchema);
 
-module.exports = { Recipe };
+module.exports =  Recipe ;

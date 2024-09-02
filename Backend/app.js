@@ -8,12 +8,14 @@ app.use(cors());
 app.use(express.json());
 const server = http.createServer(app);
 const CuisineRoutes = require('./routes/CuisineRoute');
+const DishRoute = require('./routes/DishRoute');
+
 
 
 
 
 app.use('/api/cuisine', CuisineRoutes); 
-
+app.use('/api/Dish', DishRoute);
 
 
 // الاتصال بقاعدة البيانات باستخدام URI من ملف التكوين
