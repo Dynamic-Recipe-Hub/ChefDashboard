@@ -46,23 +46,23 @@ const recipeSchema = new mongoose.Schema({
     {
       rating: {
         type: Number,
-        required: true,
+        default: null
       },
       comment: {
         type: String,
-        required: true,
+        default: null
       },
       user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
+        default: null
       },
     },
   ],
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Chef', // reference to the Chef who created the recipe
-    required: true,
+    default: null
   },
   createdAt: {
     type: Date,
@@ -74,11 +74,11 @@ const recipeSchema = new mongoose.Schema({
   },
   isApproved: {
     type: Boolean,
-    default: false, // default to false, meaning not approved
+    default: false, 
   },
   isDeleted: {
     type: Boolean,
-    default: false, // default to false, meaning not deleted
+    default: false, 
   },
 });
 
@@ -91,4 +91,4 @@ recipeSchema.pre('save', function (next) {
 // Compile and export the Recipe model
 const Recipe = mongoose.model('Recipe', recipeSchema);
 
-module.exports = { Recipe };
+module.exports = Recipe ;
