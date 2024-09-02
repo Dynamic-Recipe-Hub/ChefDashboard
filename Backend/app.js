@@ -1,0 +1,33 @@
+const express = require('express');
+const http = require('http');
+const mongoose = require('mongoose'); // استيراد mongoose بشكل صحيح
+const cors = require('cors'); // استيراد cors
+const config = require('./config/config'); // استيراد ملف التكوين
+const app = express();
+app.use(cors());
+app.use(express.json());
+const server = http.createServer(app);
+const CuisineRoutes = require('./routes/CuisineRoute');
+
+
+
+
+app.use('/api/cuisine', CuisineRoutes); 
+
+
+
+// الاتصال بقاعدة البيانات باستخدام URI من ملف التكوين
+mongoose.connect(config.mongodbUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+    .then(() => {
+        console.log('Connected to MongoDB successfully');
+    })
+    .catch((err) => {
+        console.error('Failed to connect to MongoDB:', err);
+    });
+
+server.listen(3000, function(){
+    console.log("Server is running at http://localhost:3000");
+});
