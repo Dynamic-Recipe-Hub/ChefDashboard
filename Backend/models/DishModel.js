@@ -3,13 +3,11 @@ const mongoose = require('mongoose');
 // Define the schema for a Dish
 const dishSchema = new mongoose.Schema({
   name: { 
-    type: String, 
-    required: true 
+    type: String
   },
   description: String,
   price: { 
-    type: Number, 
-    required: true 
+    type: Number 
   },
   chef: { 
     type: mongoose.Schema.Types.ObjectId, 

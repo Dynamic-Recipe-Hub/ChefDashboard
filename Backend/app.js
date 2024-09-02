@@ -8,14 +8,23 @@ app.use(cors());
 app.use(express.json());
 const server = http.createServer(app);
 const CuisineRoutes = require('./routes/CuisineRoute');
+
+const DishRoute = require('./routes/DishRoute');
+
 const recipeRoutes = require('./routes/RecipeRoute');
 
 
 
 
+
+
+
 app.use('/api/cuisine', CuisineRoutes); 
+app.use('/api/Dish', DishRoute);
+
 
 app.use('/api/recipes', recipeRoutes);
+
 
 // الاتصال بقاعدة البيانات باستخدام URI من ملف التكوين
 mongoose.connect(config.mongodbUri, {
