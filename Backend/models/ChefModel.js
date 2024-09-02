@@ -4,9 +4,9 @@ const chefSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    image: { type: String },
     bio: String,
-    recipes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Recipe' }],
-    dishes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Dish' }]
+    isApproved: { type: Boolean, default: false }
 });
 
 const Chef = mongoose.model('Chef', chefSchema);
